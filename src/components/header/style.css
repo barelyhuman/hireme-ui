@@ -1,0 +1,9 @@
+.link {
+  color: #555;
+  text-decoration: none;
+}
+
+.active-link {
+  color: black;
+  font-weight: 600;
+}

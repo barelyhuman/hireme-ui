@@ -1,0 +1,31 @@
+@import url('https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css');
+
+.container {
+  padding: 56px 20px;
+  min-height: 100%;
+  width: 100%;
+}
+
+.m-sm {
+  margin: 5px;
+}
+
+.danger-text {
+  color: red !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.d-block {
+  display: block;
+}
