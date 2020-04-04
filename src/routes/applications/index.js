@@ -28,7 +28,9 @@ export default class Applications extends Component {
       }
     } catch (err) {
       console.log(err);
-      toast.error(err.response.data.error);
+      if (err.response) {
+        toast.error(err.response.data.error);
+      }
     }
   }
 

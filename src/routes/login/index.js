@@ -29,7 +29,9 @@ export default class Login extends Component {
         window.location.reload();
       }, 0);
     } catch (err) {
-      toast.error(err.response.data.error);
+      if (err.response) {
+        toast.error(err.response.data.error);
+      }
     }
   }
 

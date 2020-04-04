@@ -19,7 +19,9 @@ export default class CreateListing extends Component {
       toast.success(response.data.message);
       route('/listings');
     } catch (err) {
-      toast.success(err.response.data.error);
+      if (err.response) {
+        toast.error(err.response.data.error);
+      }
       console.log(err);
     }
   }

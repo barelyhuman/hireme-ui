@@ -14,7 +14,9 @@ export default class Register extends Component {
       const response = await APIService.register(email, password);
       toast.success(response.data.message);
     } catch (err) {
-      toast.error(err.response.data.error);
+      if (err.response) {
+        toast.error(err.response.data.error);
+      }
       throw err;
     }
   }

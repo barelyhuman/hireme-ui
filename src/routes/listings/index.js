@@ -46,7 +46,7 @@ export default class Listings extends Component {
       this.fetchListings();
     } catch (err) {
       console.log(err);
-      if ((((err || {}).response || {}).data || {}).error) {
+      if (err.response) {
         toast.error(err.response.data.error);
       }
     }
