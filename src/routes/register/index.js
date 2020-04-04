@@ -41,7 +41,7 @@ export default class Register extends Component {
             onChange={(e) => this.setState({ password: e.target.value })}
             value={password}
           />
-          <button onClick={() => this.register()}>Login</button>
+          <button onClick={() => this.register()}>Register</button>
         </div>
       </div>
     );
