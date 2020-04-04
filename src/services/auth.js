@@ -3,26 +3,35 @@ import { route } from 'preact-router';
 const AuthService = {};
 
 AuthService.isAuthenticated = () => {
-  if (window.localStorage.getItem('auth')) {
-    return true;
+  if (typeof window !== 'undefined') {
+    if (window.localStorage.getItem('auth')) {
+      return true;
+    }
+    return false;
   }
   return false;
 };
 
 AuthService.logout = () => {
-  window.localStorage.removeItem('auth');
-  route('/login');
-  setTimeout(() => {
-    window.location.reload();
-  }, 0);
+  if (typeof window !== 'undefined') {
+    window.localStorage.removeItem('auth');
+    route('/login');
+    setTimeout(() => {
+      window.location.reload();
+    }, 0);
+  }
 };
 
 AuthService.setToken = (token) => {
-  window.localStorage.setItem('auth', token);
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('auth', token);
+  }
 };
 
 AuthService.getToken = () => {
-  return window.localStorage.getItem('auth');
+  if (typeof window !== 'undefined') {
+    return window.localStorage.getItem('auth');
+  }
 };
 
 export default AuthService;
