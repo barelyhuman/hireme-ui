@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import APIService from '../../services/api';
+import toast from '../../services/toast';
 
 export default class Register extends Component {
   state = {
@@ -7,9 +8,15 @@ export default class Register extends Component {
     password: '',
   };
 
-  register() {
-    const { email, password } = this.state;
-    APIService.register(email, password);
+  async register() {
+    try {
+      const { email, password } = this.state;
+      const response = await APIService.register(email, password);
+      toast.success(response.data.message);
+    } catch (err) {
+      toast.error(err.response.data.error);
+      throw err;
+    }
   }
 
   render() {

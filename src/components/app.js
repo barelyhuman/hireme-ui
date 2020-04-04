@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
-import { Router } from 'preact-router';
+import { Router, route } from 'preact-router';
+import 'notyf/notyf.min.css';
 
 import Header from './header';
 
@@ -11,6 +12,10 @@ import Logout from '../routes/logout';
 import Register from '../routes/register';
 import Listings from '../routes/Listings';
 import Applications from '../routes/Applications';
+import CreateListing from '../routes/create-listing';
+import ViewApplicants from '../routes/view-applicants';
+
+import AuthService from '../services/auth';
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -18,8 +23,20 @@ export default class App extends Component {
    *	@param {string} event.url	The newly routed URL
    */
   handleRoute = (e) => {
+    const privatePaths = ['/logout', '/listings', '/applications', '/new', '/'];
+    if (privatePaths.indexOf(e.url) > -1 && !AuthService.isAuthenticated()) {
+      return route('/login');
+    }
     this.currentUrl = e.url;
   };
+
+  componentDidMount() {
+    if (AuthService.isAuthenticated()) {
+      route('/');
+    } else {
+      route('/login');
+    }
+  }
 
   render() {
     return (
@@ -32,6 +49,8 @@ export default class App extends Component {
           <Register path="/register" />
           <Listings path="/listings" />
           <Applications path="/applications" />
+          <ViewApplicants path="/view/:id" />
+          <CreateListing path="/new" />
         </Router>
       </div>
     );

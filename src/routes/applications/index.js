@@ -1,20 +1,34 @@
 import { h, Component } from 'preact';
 
 import ApiService from '../../services/api';
+import toast from '../../services/toast';
 
 export default class Applications extends Component {
+  _mounted = false;
   state = {
     listings: [],
   };
 
-  async componentWillMount() {
+  componentDidMount() {
+    this._mounted = true;
+    this.fetchListings();
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+  }
+
+  async fetchListings() {
     try {
       const response = await ApiService.fetchAppliedListings();
-      this.setState({
-        listings: response.data.data,
-      });
+      if (this._mounted) {
+        this.setState({
+          listings: response.data.data,
+        });
+      }
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.error);
     }
   }
 

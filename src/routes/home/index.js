@@ -1,18 +1,31 @@
 import { h, Component } from 'preact';
 
 import ApiService from '../../services/api';
+import toast from '../../services/toast';
 
 export default class Home extends Component {
+  _mounted = false;
   state = {
     listings: [],
   };
 
-  async componentWillMount() {
+  componentDidMount() {
+    this._mounted = true;
+    this.fetchAllListings();
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+  }
+
+  async fetchAllListings() {
     try {
       const response = await ApiService.fetchAllListings();
-      this.setState({
-        listings: response.data.data,
-      });
+      if (this._mounted) {
+        this.setState({
+          listings: response.data.data,
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -21,10 +34,12 @@ export default class Home extends Component {
   async applyToListing(listing) {
     try {
       const response = await ApiService.applyToListing(listing.id);
-      console.log(response);
+      toast.success(response.data.message);
     } catch (err) {
+      toast.error(err.response.data.error);
       console.log(err);
     }
+    this.fetchAllListings();
   }
 
   render() {
@@ -49,9 +64,13 @@ export default class Home extends Component {
                 <td>{item.description}</td>
                 <td>{item.location}</td>
                 <td>
-                  <button onClick={() => this.applyToListing(item)}>
-                    Apply
-                  </button>
+                  {item.applied ? (
+                    <span class="success-text">Applied</span>
+                  ) : (
+                    <button onClick={() => this.applyToListing(item)}>
+                      Apply
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

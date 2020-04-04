@@ -2,6 +2,7 @@ import { h, Component } from 'preact';
 import APIService from '../../services/api';
 import AuthService from '../../services/auth';
 import { route } from 'preact-router';
+import toast from '../../services/toast';
 
 export default class Login extends Component {
   state = {
@@ -27,7 +28,9 @@ export default class Login extends Component {
       setTimeout(() => {
         window.location.reload();
       }, 0);
-    } catch (err) {}
+    } catch (err) {
+      toast.error(err.response.data.error);
+    }
   }
 
   render() {

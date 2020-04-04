@@ -10,8 +10,12 @@
   margin: 5px;
 }
 
+.success-text {
+  color: #0da476;
+}
+
 .danger-text {
-  color: red !important;
+  color: #c73e49;
 }
 
 .text-center {
@@ -28,4 +32,12 @@
 
 .d-block {
   display: block;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.content-box {
+  box-sizing: content-box;
 }
