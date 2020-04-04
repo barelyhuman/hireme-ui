@@ -64,7 +64,7 @@ export default class Home extends Component {
                 <td>{item.name}</td>
                 <td>{item.company_name}</td>
                 <td>{item.description}</td>
-                <td>{item.location}</td>
+                <td>{item.location || 'Not Listed'}</td>
                 <td>
                   {item.applied ? (
                     <span class="success-text">Applied</span>

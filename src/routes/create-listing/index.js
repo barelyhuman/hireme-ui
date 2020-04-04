@@ -52,7 +52,7 @@ export default class CreateListing extends Component {
           <textarea
             type="text"
             class="ml-auto mr-auto w-100 content-box"
-            placeholder="Description"
+            placeholder="Description (About the job listing)"
             rows={10}
             value={description}
             onChange={(e) => this.setState({ description: e.target.value })}
@@ -62,7 +62,7 @@ export default class CreateListing extends Component {
           <input
             type="text"
             class="ml-auto mr-auto w-100"
-            placeholder="Tags (ex. one, two, three) (Optional)"
+            placeholder="Tags (Optional,ex: Javascript, Ruby)"
             value={tags}
             onChange={(e) => this.setState({ tags: e.target.value })}
           />
@@ -71,7 +71,7 @@ export default class CreateListing extends Component {
           <input
             type="text"
             class="ml-auto mr-auto w-100"
-            placeholder="Location (Optional)"
+            placeholder="Location (Optional, ex: Province/Country or Remote)"
             value={location}
             onChange={(e) => this.setState({ location: e.target.value })}
           />
