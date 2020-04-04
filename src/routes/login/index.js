@@ -24,8 +24,8 @@ export default class Login extends Component {
       const { email, password } = this.state;
       const response = await APIService.login(email, password);
       AuthService.setToken(response.data.data.token);
+      route('/');
       setTimeout(() => {
-        route('/');
         window.location.reload();
       }, 500);
     } catch (err) {
