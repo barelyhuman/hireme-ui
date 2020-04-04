@@ -10,8 +10,8 @@ import Home from '../routes/home';
 import Login from '../routes/login';
 import Logout from '../routes/logout';
 import Register from '../routes/register';
-import Listings from '../routes/Listings';
-import Applications from '../routes/Applications';
+import Listings from '../routes/listings';
+import Applications from '../routes/applications';
 import CreateListing from '../routes/create-listing';
 import ViewApplicants from '../routes/view-applicants';
 
