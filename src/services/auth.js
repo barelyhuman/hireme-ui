@@ -3,11 +3,8 @@ import { route } from 'preact-router';
 const AuthService = {};
 
 AuthService.isAuthenticated = () => {
-  if (typeof window !== 'undefined') {
-    if (window.localStorage.getItem('auth')) {
-      return true;
-    }
-    return false;
+  if (window.localStorage.getItem('auth')) {
+    return true;
   }
   return false;
 };
