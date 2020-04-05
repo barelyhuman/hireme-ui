@@ -79,9 +79,10 @@ export default class Listings extends Component {
     const { filteredApplicants } = this.state;
     return (
       <div class="container">
-        <label htmlFor="">
+        <label class="checkbox-wrapper">
+          <span>Show Shortlisted</span>
           <input type="checkbox" onChange={(e) => this.handleCheckbox(e)} />
-          Show shortlisted
+          <div class="checkbox-input" />
         </label>
         <table>
           <thead>
@@ -98,15 +99,12 @@ export default class Listings extends Component {
                 <td>{item.userEmail}</td>
                 <td>
                   {item.is_shortlisted ? (
-                    <button
-                      class="danger-text"
-                      onClick={() => this.shortListApplicant(item)}
-                    >
-                      Disapprove
+                    <button onClick={() => this.shortListApplicant(item)}>
+                      <i class="gg-remove" />
                     </button>
                   ) : (
                     <button onClick={() => this.shortListApplicant(item)}>
-                      Shortlist
+                      <i class="gg-check" />
                     </button>
                   )}
                 </td>

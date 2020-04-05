@@ -76,13 +76,10 @@ export default class Listings extends Component {
                 <td>{item.location}</td>
                 <td colSpan={2}>
                   <button onClick={() => this.viewApplicants(item)}>
-                    View Applicants
+                    <i class="gg-eye" />
                   </button>
-                  <button
-                    class="danger-text"
-                    onClick={() => this.deleteListing(item)}
-                  >
-                    Delete
+                  <button onClick={() => this.deleteListing(item)}>
+                    <i class="gg-trash-empty" />
                   </button>
                 </td>
               </tr>

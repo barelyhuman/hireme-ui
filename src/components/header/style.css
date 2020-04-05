@@ -1,9 +1,13 @@
 .link {
-  color: #555;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.link:hover {
   text-decoration: none;
 }
 
 .active-link {
-  color: black;
+  color: var(--secondary-color);
   font-weight: 600;
 }

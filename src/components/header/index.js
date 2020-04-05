@@ -3,24 +3,6 @@ import { Link } from 'preact-router/match';
 import style from './style.css';
 import AuthService from '../../services/auth';
 
-const publicNav = () => (
-  <>
-    {!AuthService.isAuthenticated() ? (
-      <nav class="d-block text-center ml-auto mr-auto">
-        <span class="m-sm">
-          <Link
-            class={style.link}
-            activeClassName={style['active-link']}
-            href="/login"
-          >
-            Login | Register
-          </Link>
-        </span>
-      </nav>
-    ) : null}
-  </>
-);
-
 const privateNav = () => (
   <>
     {AuthService.isAuthenticated() ? (
@@ -58,7 +40,7 @@ const privateNav = () => (
             activeClassName={style['active-link']}
             href="/logout"
           >
-            <span class="danger-text">Logout</span>
+            <button class="outline">Logout</button>
           </Link>
         </span>
       </nav>
@@ -67,10 +49,11 @@ const privateNav = () => (
 );
 
 const Header = () => (
-  <header>
-    <h1 class="text-center">HireMe</h1>
-    {publicNav()}
-    {privateNav()}
+  <header class="d-flex align-center justify-space-between">
+    <div>
+      <h1 class="text-center">HireMe</h1>
+    </div>
+    <div>{privateNav()}</div>
   </header>
 );
 

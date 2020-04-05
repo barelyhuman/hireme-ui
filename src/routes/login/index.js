@@ -12,6 +12,7 @@ export default class Login extends Component {
   state = {
     email: '',
     emailTakingTime: false,
+    loading: false,
   };
 
   componentDidMount() {
@@ -48,9 +49,17 @@ export default class Login extends Component {
   async createMagicRequest() {
     try {
       const { email } = this.state;
+      if (!email) {
+        return;
+      }
+      this.setState({
+        loading: true,
+      });
+
       const response = await APIService.createMagicRequest(email);
       this.setState({
         token: response.data.data.token,
+        loading: false,
       });
       this.confirmationLoader.start = Date.now();
       this.confirmationLoader.handler = setInterval(() => {
@@ -66,6 +75,9 @@ export default class Login extends Component {
         }
       }, 5000);
     } catch (err) {
+      this.setState({
+        loading: false,
+      });
       if (err.response) {
         toast.error(err.response.data.error);
       }
@@ -91,20 +103,22 @@ export default class Login extends Component {
   }
 
   render() {
-    const { email, token, emailTakingTime } = this.state;
+    const { email, token, emailTakingTime, loading } = this.state;
     return (
       <div class="container text-center">
-        <h1>Enter your email</h1>
+        <h2>Enter your email to start</h2>
         {!token ? (
           <div>
             <input
               type="text"
               class="ml-auto mr-auto"
               placeholder="email"
-              onChange={(e) => this.setState({ email: e.target.value })}
+              onKeyup={(e) => this.setState({ email: e.target.value })}
               value={email}
             />
-            <button onClick={() => this.createMagicRequest()}>Continue</button>
+            <button disabled={!email} onClick={() => this.createMagicRequest()}>
+              {loading ? 'Loading...' : 'Continue'}
+            </button>
           </div>
         ) : null}
         {token ? (
@@ -114,7 +128,7 @@ export default class Login extends Component {
           </div>
         ) : null}
         {emailTakingTime ? (
-          <div class="danger-text">
+          <div>
             Still haven't received the email? We'd like you to request that you
             check your spam folder as well.
             <p>
