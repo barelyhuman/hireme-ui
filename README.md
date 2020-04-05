@@ -2,24 +2,31 @@
 
 The Webapp integrating the following api [HireMe](https://github.com/barelyhuman/hireme)
 
-## CLI Commands
 
-```bash
-# install dependencies
-npm install
+## Pending Feature Set 
 
-# serve with hot reload at localhost:8080
-npm run dev
+Includes tasks for the server sided code as well
 
-# build for production with minification
-npm run build
+- [ ] Email Verification Flow (or just use magic.link)
+- [ ] Public Viewable Job Listings
+- [ ] Additional Profile Details (Company Puts in its data, Applicant puts in experience and stuff)
+- [ ] Internal JSON based Resume Builder (Has nothing to do with the above)
+- [ ] Markdown Supported Descriptions
+- [ ] Trigger Email and Notification for Shortlisting Status
+- [ ] Chat? (I don't know, sending emails should be enough)
+- ---- Will add more as I remember ----
 
-# test the production build locally
-npm run serve
 
-# run tests with jest and preact-render-spy
-npm run test
-```
+
+## Pending UX/UI Components
+- [ ] Cards
+- [ ] Button
+- [ ] Headers
+- [ ] Dropdowns 
+- [ ] Loading States for Each of the Above
+- [ ] Subtle Interaction Animations
+- ---- Will add more as I remember ----
+
 
 ## Code Style and Consistency
 
