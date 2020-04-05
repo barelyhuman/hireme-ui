@@ -1,4 +1,34 @@
 @import url('https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css');
+@import url('https://css.gg/eye.css');
+@import url('https://css.gg/trash-empty.css');
+@import url('https://css.gg/check.css');
+@import url('https://css.gg/remove.css');
+
+@font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local('.SFNSText-Light'), local('.HelveticaNeueDeskInterface-Light'),
+    local('.LucidaGrandeUI'), local('Ubuntu Light'), local('Segoe UI Light'),
+    local('Roboto-Light'), local('DroidSans'), local('Tahoma');
+}
+
+:root {
+  --primary-color: #fde5da;
+  --secondary-color: #545454;
+  --border-radius: 2px;
+  --border-width: 2px;
+}
+
+html,
+body {
+  color: var(--secondary-color) !important;
+  font-family: system;
+}
+
+body {
+  background: var(--primary-color);
+}
 
 .container {
   padding: 56px 20px;
@@ -7,15 +37,7 @@
 }
 
 .m-sm {
-  margin: 5px;
-}
-
-.success-text {
-  color: #0da476;
-}
-
-.danger-text {
-  color: #c73e49;
+  margin: 10px;
 }
 
 .text-center {
@@ -40,4 +62,242 @@
 
 .content-box {
   box-sizing: content-box;
+}
+
+button {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  padding: 6px 20px;
+  border: var(--border-width) solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  font: sans-serif;
+  min-height: 18px;
+  color: var(--primary-color);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: var(--secondary-color);
+}
+
+button:hover {
+  -webkit-border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  background: var(--secondary-color);
+}
+
+button:disabled {
+  border: var(--border-width) solid var(--secondary-color);
+  -webkit-border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  background: var(--secondary-color);
+}
+
+input[type='text'] {
+  border: var(--border-width) solid var(--secondary-color);
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+
+textarea {
+  border: var(--border-width) solid var(--secondary-color);
+  color: var(--secondary-color);
+  background: var(--primary-color);
+  border-radius: var(--border-radius);
+}
+
+.toast-container {
+  background: var(--primary-color) !important;
+  color: var(--secondary-color);
+  border: var(--border-width) solid var(--secondary-color);
+}
+
+tr {
+  background: var(--primary-color) !important;
+}
+
+.checkbox-wrapper *,
+.checkbox-wrapper *::before,
+.checkbox-wrapper *::after {
+  box-sizing: content-box !important;
+}
+
+.checkbox-wrapper input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox-wrapper span {
+  line-height: 1.54;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.checkbox-wrapper {
+  display: table;
+  position: relative;
+  padding-left: 1.8rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox-wrapper input[type='checkbox'] ~ .checkbox-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background: rgba(253, 229, 218, 1);
+  transition: background 250ms;
+  border: var(--border-width) solid rgba(84, 84, 84, 1);
+  border-radius: 0.125rem;
+}
+
+.checkbox-wrapper input[type='radio'] ~ .checkbox-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background: rgba(253, 229, 218, 1);
+  transition: background 250ms;
+  border: var(--border-width) solid rgba(84, 84, 84, 1);
+  border-radius: 2rem;
+}
+
+.checkbox-wrapper input[type='checkbox'] ~ .checkbox-input::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 0.45rem;
+  top: 0.18rem;
+  width: 0.25rem;
+  height: 0.6rem;
+  border: var(--border-width) solid rgba(84, 84, 84, 1);
+  border-width: 0 2px 2px 0;
+  transition: background 250ms;
+  transform: rotate(45deg);
+}
+
+.checkbox-wrapper input[type='radio'] ~ .checkbox-input::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 0.25rem;
+  top: 0.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2rem;
+  background: rgba(84, 84, 84, 1);
+  transition: background 250ms;
+}
+
+.checkbox-wrapper input:disabled ~ .checkbox-input::after {
+  border-color: rgba(135, 149, 161, 1);
+}
+
+.checkbox-wrapper input:checked ~ .checkbox-input::after {
+  display: block;
+}
+
+.checkbox-wrapper:hover input ~ .checkbox-input,
+.checkbox-wrapper input:focus ~ .checkbox-input {
+  background: rgba(253, 229, 218, 1);
+}
+
+.checkbox-wrapper input:focus ~ .checkbox-input {
+  box-shadow: 0 0 0 0px rgba(84, 84, 84, 0.66);
+}
+
+.checkbox-wrapper input:checked ~ .checkbox-input {
+  background: rgba(253, 229, 218, 1);
+  border-color: rgba(84, 84, 84, 1);
+}
+
+.checkbox-wrapper input[type='checkbox']:disabled ~ .checkbox-input {
+  background: rgba(241, 245, 248, 1);
+  border-color: rgba(184, 194, 204, 1);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkbox-wrapper input[type='radio']:disabled ~ .checkbox-input {
+  background: rgba(241, 245, 248, 1);
+  border-color: rgba(184, 194, 204, 1);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkbox-wrapper input[type='radio']:disabled ~ .checkbox-input::after {
+  background: rgba(135, 149, 161, 1);
+}
+
+.checkbox-wrapper input:checked:focus ~ .checkbox-input,
+.checkbox-wrapper:hover input:not([disabled]):checked ~ .checkbox-input {
+  background: rgba(253, 229, 218, 1);
+  border-color: rgba(84, 84, 84, 1);
+}
+
+.checkbox-wrapper .checkbox-input::before {
+  content: '';
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  margin-left: -0.85rem;
+  margin-top: -0.85rem;
+  background: rgba(0, 130, 243, 1);
+  border-radius: 2rem;
+  opacity: 0.6;
+  z-index: 99999;
+  transform: scale(0);
+}
+
+.d-flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--secondary-color);
+}
+
+button.outline {
+  border: var(--border-width) solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  color: var(--secondary-color);
+  background: var(--primary-color);
+}
+
+td {
+  min-width: 150px !important;
+}
+
+thead,
+tbody {
+  border-color: var(--secondary-color);
+  border: var(--border-width) solid var(--secondary-color);
+}
+
+table,
+th,
+td {
+  text-align: center;
 }
