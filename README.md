@@ -2,8 +2,7 @@
 
 The Webapp integrating the following api [HireMe](https://github.com/barelyhuman/hireme)
 
-
-## Pending Feature Set 
+## Pending Feature Set
 
 Includes tasks for the server sided code as well
 
@@ -16,17 +15,15 @@ Includes tasks for the server sided code as well
 - [ ] Chat? (I don't know, sending emails should be enough)
 - ---- Will add more as I remember ----
 
-
-
 ## Pending UX/UI Components
+
 - [ ] Cards
 - [ ] Button
 - [ ] Headers
-- [ ] Dropdowns 
+- [ ] Dropdowns
 - [ ] Loading States for Each of the Above
 - [ ] Subtle Interaction Animations
 - ---- Will add more as I remember ----
-
 
 ## Code Style and Consistency
 
