@@ -51,7 +51,9 @@ const privateNav = () => (
 const Header = () => (
   <header class="d-flex align-center justify-space-between">
     <div>
-      <h1 class="text-center">HireMe</h1>
+      <Link class={style.link} activeClassName={style['active-link']} href="/">
+        <h1 class="text-center">HireMe</h1>
+      </Link>
     </div>
     <div>{privateNav()}</div>
   </header>
