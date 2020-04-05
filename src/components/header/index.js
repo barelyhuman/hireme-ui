@@ -13,16 +13,7 @@ const publicNav = () => (
             activeClassName={style['active-link']}
             href="/login"
           >
-            Login
-          </Link>
-        </span>
-        <span class="m-sm">
-          <Link
-            class={style.link}
-            activeClassName={style['active-link']}
-            href="/register"
-          >
-            Register
+            Login | Register
           </Link>
         </span>
       </nav>
