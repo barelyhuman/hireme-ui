@@ -14,6 +14,7 @@ import Listings from '../routes/listings';
 import Applications from '../routes/applications';
 import CreateListing from '../routes/create-listing';
 import ViewApplicants from '../routes/view-applicants';
+import Confirm from '../routes/confirm';
 
 import AuthService from '../services/auth';
 
@@ -30,14 +31,6 @@ export default class App extends Component {
     this.currentUrl = e.url;
   };
 
-  componentDidMount() {
-    if (AuthService.isAuthenticated()) {
-      route('/');
-    } else {
-      route('/login');
-    }
-  }
-
   render() {
     return (
       <div id="app">
@@ -51,6 +44,7 @@ export default class App extends Component {
           <Applications path="/applications" />
           <ViewApplicants path="/view/:id" />
           <CreateListing path="/new" />
+          <Confirm path="/confirm" />
         </Router>
       </div>
     );

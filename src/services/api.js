@@ -1,5 +1,6 @@
 import axios from 'axios';
 import AuthService from './auth';
+import { detect } from 'detect-browser';
 
 const baseURL = 'https://aliezsidhireme.herokuapp.com/';
 
@@ -72,6 +73,32 @@ ApiService.fetchListingApplicants = (listingId) => {
 
 ApiService.toggleShortlistStatus = (listingId, applicantId) => {
   return fetcher().post(`/user/listing/${listingId}/applicants/${applicantId}`);
+};
+
+ApiService.createMagicRequest = (email) => {
+  const browser = detect();
+  const tokenName = `${browser.name} - ${browser.version} | ${browser.os}`;
+  return fetcher().post(`/register/magic`, {
+    email,
+    tokenName,
+  });
+};
+
+ApiService.verifyMagicRequest = (email, token) => {
+  return fetcher().post(`/verify/magic`, {
+    email,
+    token,
+  });
+};
+
+ApiService.confirmMagicRequest = (email, token) => {
+  const urlSearchParams = new URLSearchParams();
+  urlSearchParams.append('email', email);
+  urlSearchParams.append('token', token);
+  return fetcher().get(`/confirm/magic?${urlSearchParams.toString()}`, {
+    email,
+    token,
+  });
 };
 
 export default ApiService;
