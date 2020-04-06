@@ -1,19 +1,9 @@
 @import url('https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://css.gg/eye.css');
 @import url('https://css.gg/trash-empty.css');
 @import url('https://css.gg/check.css');
 @import url('https://css.gg/remove.css');
 @import url('https://css.gg/spinner-alt.css');
-
-@font-face {
-  font-family: system;
-  font-style: normal;
-  font-weight: 300;
-  src: local('.SFNSText-Light'), local('.HelveticaNeueDeskInterface-Light'),
-    local('.LucidaGrandeUI'), local('Ubuntu Light'), local('Segoe UI Light'),
-    local('Roboto-Light'), local('DroidSans'), local('Tahoma');
-}
 
 :root {
   --primary-color: #fde5da;
@@ -25,7 +15,6 @@
 html,
 body {
   color: var(--secondary-color) !important;
-  font-family: 'Lato', system;
 }
 
 body {
