@@ -23,9 +23,7 @@ export default class Home extends Component {
       const response = await ApiService.fetchAllListings();
       if (this._mounted) {
         this.setState({
-          listings: response.data.data.length
-            ? response.data.data
-            : [this.getEmptyListing()],
+          listings: response.data.data,
         });
       }
     } catch (err) {
@@ -46,17 +44,6 @@ export default class Home extends Component {
     this.fetchAllListings();
   }
 
-  getEmptyListing() {
-    return {
-      name: 'Dummy Listing',
-      company_name: 'BarelyHuman',
-      description:
-        'This is placeholder listing since there are no listings available as of now',
-      location: 'Someplace/Somewhere',
-      applied: true,
-    };
-  }
-
   render() {
     const { listings } = this.state;
     return (
@@ -72,25 +59,31 @@ export default class Home extends Component {
             </tr>
           </thead>
           <tbody>
-            {listings.map((item) => (
+            {listings.length ? (
+              listings.map((item) => (
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.company_name}</td>
+                  <td>{item.description}</td>
+                  <td>{item.location || 'Not Listed'}</td>
+                  <td>
+                    {item.applied ? (
+                      <span class="success-text">
+                        <strong>Applied</strong>
+                      </span>
+                    ) : (
+                      <button onClick={() => this.applyToListing(item)}>
+                        Apply
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
               <tr>
-                <td>{item.name}</td>
-                <td>{item.company_name}</td>
-                <td>{item.description}</td>
-                <td>{item.location || 'Not Listed'}</td>
-                <td>
-                  {item.applied ? (
-                    <span class="success-text">
-                      <strong>Applied</strong>
-                    </span>
-                  ) : (
-                    <button onClick={() => this.applyToListing(item)}>
-                      Apply
-                    </button>
-                  )}
-                </td>
+                <td colSpan={5}>No listings to show.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
