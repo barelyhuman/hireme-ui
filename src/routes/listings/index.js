@@ -68,22 +68,32 @@ export default class Listings extends Component {
             </tr>
           </thead>
           <tbody>
-            {listings.map((item) => (
+            {listings.length ? (
+              listings.map((item) => (
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.company_name}</td>
+                  <td>{item.description}</td>
+                  <td>{item.location}</td>
+                  <td colSpan={2}>
+                    <button onClick={() => this.viewApplicants(item)}>
+                      <i class="gg-eye" />
+                    </button>
+                    <button onClick={() => this.deleteListing(item)}>
+                      <i class="gg-trash-empty" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
               <tr>
-                <td>{item.name}</td>
-                <td>{item.company_name}</td>
-                <td>{item.description}</td>
-                <td>{item.location}</td>
-                <td colSpan={2}>
-                  <button onClick={() => this.viewApplicants(item)}>
-                    <i class="gg-eye" />
-                  </button>
-                  <button onClick={() => this.deleteListing(item)}>
-                    <i class="gg-trash-empty" />
-                  </button>
+                <td colSpan={6}>
+                  You haven't created any listings yet.
+                  <br />
+                  Click on <strong>Add Listing</strong> to create one
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

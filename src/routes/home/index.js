@@ -23,7 +23,9 @@ export default class Home extends Component {
       const response = await ApiService.fetchAllListings();
       if (this._mounted) {
         this.setState({
-          listings: response.data.data,
+          listings: response.data.data.length
+            ? response.data.data
+            : [this.getEmptyListing()],
         });
       }
     } catch (err) {
@@ -44,6 +46,17 @@ export default class Home extends Component {
     this.fetchAllListings();
   }
 
+  getEmptyListing() {
+    return {
+      name: 'Dummy Listing',
+      company_name: 'BarelyHuman',
+      description:
+        'This is placeholder listing since there are no listings available as of now',
+      location: 'Someplace/Somewhere',
+      applied: true,
+    };
+  }
+
   render() {
     const { listings } = this.state;
     return (
@@ -55,7 +68,7 @@ export default class Home extends Component {
               <th>Company</th>
               <th>Description</th>
               <th>Location</th>
-              <th />
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +80,9 @@ export default class Home extends Component {
                 <td>{item.location || 'Not Listed'}</td>
                 <td>
                   {item.applied ? (
-                    <span class="success-text">Applied</span>
+                    <span class="success-text">
+                      <strong>Applied</strong>
+                    </span>
                   ) : (
                     <button onClick={() => this.applyToListing(item)}>
                       Apply

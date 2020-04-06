@@ -45,18 +45,23 @@ export default class Applications extends Component {
               <th>Company</th>
               <th>Description</th>
               <th>Location</th>
-              <th />
             </tr>
           </thead>
           <tbody>
-            {listings.map((item) => (
+            {listings.length ? (
+              listings.map((item) => (
+                <tr>
+                  <td>{item.name}</td>
+                  <td>{item.company_name}</td>
+                  <td>{item.description}</td>
+                  <td>{item.location}</td>
+                </tr>
+              ))
+            ) : (
               <tr>
-                <td>{item.name}</td>
-                <td>{item.company_name}</td>
-                <td>{item.description}</td>
-                <td>{item.location}</td>
+                <td colSpan={4}>You haven't applied to any job listings yet</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
