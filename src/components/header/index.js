@@ -52,7 +52,8 @@ const Header = () => (
   <header class="d-flex align-center justify-space-between">
     <div>
       <Link class={style.link} activeClassName={style['active-link']} href="/">
-        <h1 class="text-center">HireMe</h1>
+        <h1 class="text-center mb-0">HireMe</h1>
+        <small>The Open Source Hiring Network</small>
       </Link>
     </div>
     <div>{privateNav()}</div>
