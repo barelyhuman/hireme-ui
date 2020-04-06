@@ -1,4 +1,5 @@
 @import url('https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://css.gg/eye.css');
 @import url('https://css.gg/trash-empty.css');
 @import url('https://css.gg/check.css');
@@ -24,7 +25,7 @@
 html,
 body {
   color: var(--secondary-color) !important;
-  font-family: system;
+  font-family: 'Lato', system;
 }
 
 body {
@@ -285,6 +286,7 @@ h5,
 h6,
 strong {
   color: var(--secondary-color);
+  font-weight: 700;
 }
 
 button.outline {
