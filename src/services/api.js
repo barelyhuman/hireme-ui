@@ -2,7 +2,7 @@ import axios from 'axios';
 import AuthService from './auth';
 import { detect } from 'detect-browser';
 
-const baseURL = 'http://localhost:3000/';
+const baseURL = 'https://aliezsidhireme.herokuapp.com';
 
 const unauthHandler = (err) => {
   if (err && err.response && err.response.status === 401) {
