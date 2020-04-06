@@ -73,7 +73,7 @@ export default class Login extends Component {
         if (Date.now() - this.confirmationLoader.start > 300000) {
           clearInterval(this.confirmationLoader.handler);
         }
-      }, 5000);
+      }, 7500);
     } catch (err) {
       this.setState({
         loading: false,
