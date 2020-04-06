@@ -119,8 +119,11 @@ export default class Login extends Component {
                 value={email}
               />
             </div>
-            <button disabled={!email} onClick={() => this.createMagicRequest()}>
-              {loading ? 'Loading...' : 'Continue'}
+            <button
+              disabled={!email || loading}
+              onClick={() => this.createMagicRequest()}
+            >
+              {loading ? <i class="gg-spinner-alt" /> : 'Continue'}
             </button>
           </>
         ) : null}
@@ -128,6 +131,14 @@ export default class Login extends Component {
           <div>
             A Email has been sent to {email} has been sent.
             <p>Click the button in the email to confirm this login request.</p>
+            <div>
+              <p class="d-flex">
+                <span class="ml-sm mr-sm">
+                  <i class="gg-spinner-alt" />
+                </span>{' '}
+                Waiting for confirmation
+              </p>
+            </div>
           </div>
         ) : null}
         {emailTakingTime ? (
