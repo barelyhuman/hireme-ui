@@ -128,16 +128,16 @@ export default class Login extends Component {
           </>
         ) : null}
         {token ? (
-          <div>
-            A Email has been sent to {email} has been sent.
+          <div class="text-center">
+            <p>
+              A Email has been sent to <strong>{email}.</strong>
+            </p>
             <p>Click the button in the email to confirm this login request.</p>
             <div>
-              <p class="d-flex">
-                <span class="ml-sm mr-sm">
-                  <i class="gg-spinner-alt" />
-                </span>{' '}
-                Waiting for confirmation
-              </p>
+              <p class="text-center mb-0">Waiting for confirmation</p>
+              <p class="mb-0">
+                <i class="gg-spinner-alt ml-auto mr-auto" />
+              </p>{' '}
             </div>
           </div>
         ) : null}
