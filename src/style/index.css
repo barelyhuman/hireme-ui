@@ -3,6 +3,7 @@
 @import url('https://css.gg/trash-empty.css');
 @import url('https://css.gg/check.css');
 @import url('https://css.gg/remove.css');
+@import url('https://css.gg/spinner-alt.css');
 
 @font-face {
   font-family: system;
@@ -313,4 +314,11 @@ td {
 
 .mt-lg {
   margin-top: 20px;
+}
+
+.ml-sm {
+  margin-left: 10px;
+}
+.mr-sm {
+  margin-right: 10px;
 }
