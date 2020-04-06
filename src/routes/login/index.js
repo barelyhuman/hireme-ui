@@ -4,6 +4,8 @@ import AuthService from '../../services/auth';
 import { route } from 'preact-router';
 import toast from '../../services/toast';
 
+const pollingTime = 3500;
+
 export default class Login extends Component {
   confirmationLoader = {
     start: 0,
@@ -73,7 +75,7 @@ export default class Login extends Component {
         if (Date.now() - this.confirmationLoader.start > 300000) {
           clearInterval(this.confirmationLoader.handler);
         }
-      }, 7500);
+      }, pollingTime);
     } catch (err) {
       this.setState({
         loading: false,
