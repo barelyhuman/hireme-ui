@@ -55,7 +55,7 @@ export default class Listings extends Component {
   render() {
     const { listings } = this.state;
     return (
-      <div class="container">
+      <div>
         <button onClick={() => this.addListing()}>Add Listing</button>
         <table>
           <thead>

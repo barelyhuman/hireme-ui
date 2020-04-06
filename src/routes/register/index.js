@@ -27,7 +27,7 @@ export default class Register extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div class="container">
+      <div>
         <h1 class="text-center">Register</h1>
         <div class="text-center">
           <input

@@ -105,21 +105,22 @@ export default class Login extends Component {
   render() {
     const { email, token, emailTakingTime, loading } = this.state;
     return (
-      <div class="container text-center">
+      <div class="container d-flex flex-col justify-center align-center">
         <h2>Enter your email to start</h2>
         {!token ? (
-          <div>
-            <input
-              type="text"
-              class="ml-auto mr-auto"
-              placeholder="email"
-              onKeyup={(e) => this.setState({ email: e.target.value })}
-              value={email}
-            />
+          <>
+            <div>
+              <input
+                type="text"
+                placeholder="email"
+                onKeyup={(e) => this.setState({ email: e.target.value })}
+                value={email}
+              />
+            </div>
             <button disabled={!email} onClick={() => this.createMagicRequest()}>
               {loading ? 'Loading...' : 'Continue'}
             </button>
-          </div>
+          </>
         ) : null}
         {token ? (
           <div>

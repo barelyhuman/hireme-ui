@@ -35,17 +35,19 @@ export default class App extends Component {
     return (
       <div id="app">
         <Header />
-        <Router onChange={this.handleRoute}>
-          <Home path="/" />
-          <Login path="/login" />
-          <Logout path="/logout" />
-          <Register path="/register" />
-          <Listings path="/listings" />
-          <Applications path="/applications" />
-          <ViewApplicants path="/view/:id" />
-          <CreateListing path="/new" />
-          <Confirm path="/confirm" />
-        </Router>
+        <div class="mt-lg">
+          <Router onChange={this.handleRoute}>
+            <Home path="/" />
+            <Login path="/login" />
+            <Logout path="/logout" />
+            <Register path="/register" />
+            <Listings path="/listings" />
+            <Applications path="/applications" />
+            <ViewApplicants path="/view/:id" />
+            <CreateListing path="/new" />
+            <Confirm path="/confirm" />
+          </Router>
+        </div>
       </div>
     );
   }

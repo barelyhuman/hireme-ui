@@ -37,7 +37,7 @@ export default class Applications extends Component {
   render() {
     const { listings } = this.state;
     return (
-      <div class="container">
+      <div>
         <table>
           <thead>
             <tr>

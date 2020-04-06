@@ -78,7 +78,7 @@ export default class Listings extends Component {
   render() {
     const { filteredApplicants } = this.state;
     return (
-      <div class="container">
+      <div>
         <label class="checkbox-wrapper">
           <span>Show Shortlisted</span>
           <input type="checkbox" onChange={(e) => this.handleCheckbox(e)} />

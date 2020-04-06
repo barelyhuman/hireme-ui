@@ -301,3 +301,15 @@ th,
 td {
   text-align: center;
 }
+
+.flex-col {
+  flex-direction: column;
+}
+
+.mt-md {
+  margin-top: 15px;
+}
+
+.mt-lg {
+  margin-top: 20px;
+}

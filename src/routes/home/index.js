@@ -47,7 +47,7 @@ export default class Home extends Component {
   render() {
     const { listings } = this.state;
     return (
-      <div class="container">
+      <div>
         <table>
           <thead>
             <tr>
