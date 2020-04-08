@@ -6,7 +6,7 @@ import AuthService from '../../services/auth';
 const privateNav = () => (
   <>
     {AuthService.isAuthenticated() ? (
-      <nav class="d-block text-center ml-auto mr-auto">
+      <nav class="block text-center ml-auto mr-auto">
         <span class="m-sm">
           <Link
             class={style.link}
@@ -49,7 +49,7 @@ const privateNav = () => (
 );
 
 const Header = () => (
-  <header class="d-flex align-center justify-space-between">
+  <header class="flex align-center justify-space-between">
     <div>
       <Link class={style.link} activeClassName={style['active-link']} href="/">
         <h1 class="text-center mb-0">HireMe</h1>

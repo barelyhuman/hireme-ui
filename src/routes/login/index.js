@@ -107,7 +107,7 @@ export default class Login extends Component {
   render() {
     const { email, token, emailTakingTime, loading } = this.state;
     return (
-      <div class="container d-flex flex-col justify-center align-center">
+      <div class="container flex flex-col justify-center align-center">
         <h2>Enter your email to start</h2>
         {!token ? (
           <>
