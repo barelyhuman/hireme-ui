@@ -3,6 +3,7 @@ import { Router, route } from 'preact-router';
 import 'notyf/notyf.min.css';
 
 import Header from './header';
+import Offline from './offline';
 
 // Code-splitting is automated for routes
 import Home from '../routes/home';
@@ -23,6 +24,11 @@ export default class App extends Component {
    *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
    *	@param {string} event.url	The newly routed URL
    */
+
+  state = {
+    appOnline: true,
+  };
+
   handleRoute = (e) => {
     const privatePaths = ['/logout', '/listings', '/applications', '/new', '/'];
     if (privatePaths.indexOf(e.url) > -1 && !AuthService.isAuthenticated()) {
@@ -31,23 +37,35 @@ export default class App extends Component {
     this.currentUrl = e.url;
   };
 
+  componentDidMount() {
+    window.addEventListener('online', () => this.setState({ appOnline: true }));
+    window.addEventListener('offline', () =>
+      this.setState({ appOnline: false })
+    );
+  }
+
   render() {
+    const { appOnline } = this.state;
     return (
       <div id="app">
         <Header />
-        <div class="mt-lg">
-          <Router onChange={this.handleRoute}>
-            <Home path="/" />
-            <Login path="/login" />
-            <Logout path="/logout" />
-            <Register path="/register" />
-            <Listings path="/listings" />
-            <Applications path="/applications" />
-            <ViewApplicants path="/view/:id" />
-            <CreateListing path="/new" />
-            <Confirm path="/confirm" />
-          </Router>
-        </div>
+        {appOnline ? (
+          <div class="mt-lg">
+            <Router onChange={this.handleRoute}>
+              <Home path="/" />
+              <Login path="/login" />
+              <Logout path="/logout" />
+              <Register path="/register" />
+              <Listings path="/listings" />
+              <Applications path="/applications" />
+              <ViewApplicants path="/view/:id" />
+              <CreateListing path="/new" />
+              <Confirm path="/confirm" />
+            </Router>
+          </div>
+        ) : (
+          <Offline />
+        )}
       </div>
     );
   }
